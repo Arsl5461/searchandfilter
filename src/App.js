@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import Navbar from './components/Navbarr';
 import './App.css';
 
+import Navbarr from './components/Navbarr';
+import SearchBar from './components/SearchBar';
+import SelectedProperties from './components/SelectedProperties';
+import SearchedProperties from './components/SearchProperties';
+import Data from "./Data"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 function App() {
+  const [query,setQuery]=useState("")
+  const search=(data)=>{
+return data.filter((item)=>item.Address.toLowerCase().includes(query));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+<Navbarr/>
+<SearchBar data={(Data)}/>
+{/* <SelectedProperties/> */}
+{/* <SearchedProperties data={search(Data)}/> */}
+
     </div>
   );
 }
